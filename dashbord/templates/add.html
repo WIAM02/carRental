@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="{% static 'assets/css/quicksand.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <!--Animate CSS-->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <!--Chartist CSS-->
+    <link rel="stylesheet" href="{% static 'assets/css/chartist.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+<div class="loader-wrapper">
+    <div class="loader-circle">
+        <div class="loader-wave"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <!--Header-->
+    <div class="row header shadow-sm">
+        
+        <!--Logo-->
+        <div class="col-sm-3 pl-0 text-center header-logo">
+            <div class=" mr-3 pt-3 pb-2 mb-0" style="background-color: #262672;">
+                <img src="{% static 'assets/img/logo.png' %}" alt="logo" class="img-fluid" />
+        
+        </div>
+        </div>
+        <!--Logo-->
+
+        <!--Header Menu-->
+        <div class="col-sm-9 header-menu pt-2 pb-0">
+            <div class="row">
+                
+                <!--Menu Icons-->
+                <div class="col-sm-4 col-8 pl-0">
+                    <!--Toggle sidebar-->
+                    <span class="menu-icon" onclick="toggle_sidebar()">
+                        <span id="sidebar-toggle-btn"></span>
+                    </span>
+                </div>
+                </div>   
+                </div>
+            </div>
+                            <div class="row main-content">
+                                <!--Sidebar left-->
+                                <div class="col-sm-3 col-xs-6 sidebar pl-0">
+                                    <div class="inner-sidebar mr-3">
+                                        <br>
+                                        <div class="avatar text-center">
+                                            <p><strong>Admin Dashboard</strong></p>
+                                        </div>
+                                
+                                        <div class="sidebar-menu-container">
+                                            <ul class="sidebar-menu mt-4 mb-4">
+                                            
+                                                        <li class="parent">
+                                                    <a href="{% url 'dashboard' %}" class=""><i class="fa fa-calendar-o mr-3"> </i>
+                                                        <span class="none">Dashboard </span>
+                                                    </a>
+                                                </li>
+                                            
+                                            
+                                                <li class="parent">
+                                                    <a href="{% url 'ajouter' %}" class=""><i class="fa fa-pencil-square mr-3"></i>
+                                                        <span class="none">Ajouter </span>
+                                                    </a>
+                                                </li>
+                                                
+                                                
+                                                    <li class="parent">
+                                                        <a href="{% url 'deleted_users_list' %}" class="">    
+                                                        <i class="fa fa-trash mr-3"></i>
+                                                        <span class="none">les utlisateurs supprimés</span>
+                                                    </a>
+                                                    </li>
+                                                    <li class="parent">
+                                                    <a href="{% url 'logout' %}" class="">
+                                                        <i class="fa fa-sign-out mr-3"></i>
+                                                        <span class="none"> LoGOut</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--Sidebar Naigation Menu-->
+                                    </div>
+                                </div>
+                                <!--Sidebar left-->
+
+                                <!--Content right-->
+                                <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                                    <h5 class="mb-3" ><strong>Ajouter utilisateur</strong></h5>
+                                    
+
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="bg-white border rounded p-4" method="post" action="{% url 'ajouter'  %}">
+                            <h5 class="mb-3 text-center text-primary"><strong>Ajouter</strong></h5>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter a name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tel">Telephone Number</label>
+                                <input type="tel" class="form-control" name="tel" id="tel" placeholder="Enter a telephone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter a username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter an email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter a password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" class="form-control" name="confirm-password" id="confirm-password" placeholder="Confirm password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select class="form-control" name="type" id="type" required>
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/login/dashboard/" class="btn btn-outline-dark">Home</a>
+                        </form>
+                    </div>
+                    </div>
+                </div> 
+            </div>
+         </div>
+     </div>
+    </div>
+                        </body>
+                            </html>                      
+
+                            <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+                            <script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
+                            <!--Popper JS-->
+                            <script src="{% static 'assets/js/popper.min.js' %}"></script>
+                            <!--Bootstrap-->
+                            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+                            
+                            <!--Flot.JS-->
+                            <script src="{% static 'assets/js/charts/jquery.flot.min.js' %}"></script>
+                            <script src="{% static 'assets/js/charts/jquery.flot.pie.min.js' %}"></script>
+                            <script src="{% static 'assets/js/charts/jquery.flot.categories.min.js' %}"></script>
+                            <script src="{% static 'assets/js/charts/jquery.flot.stack.min.js' %}"></script>
+                            <!--Chart JS-->
+                            <script src="{% static 'assets/js/charts/chart.min.js' %}"></script>
+                            <!--Chartist JS-->
+                            <script src="{% static 'assets/js/charts/chartist.min.js' %}"></script>
+                            <script src="{% static 'assets/js/charts/chartist-data.js' %}"></script>
+                            <script src="{% static 'assets/js/charts/demo.js' %}"></script>
+
+                            <!--Nice select-->
+                            <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+                            <!--Custom Js Script-->
+                            <script src="{% static 'assets/js/custom.js' %}"></script>
+                            <!--Custom Js Script-->
+                            <script>
+                                //Nice select
+                                $('.bulk-actions').niceSelect();
+                            </script>
+                
+                        </body>
+                    </html>

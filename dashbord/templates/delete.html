@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="keywords" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+        <!--Meta Responsive tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+      
+    
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <!--Custom style.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/quicksand.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+        <!--Animate CSS-->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+        <!--Chartist CSS-->
+        <link rel="stylesheet" href="{% static 'assets/css/chartist.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <title>Admin Dashboard</title>
+    </head>
+    
+  <body>
+  
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+  
+    <div class="container-fluid">
+
+        <!--Header-->
+        <div class="row header shadow-sm">
+            
+            <!--Logo-->
+            <div class="col-sm-3 pl-0 text-center header-logo">
+                <div class=" mr-3 pt-3 pb-2 mb-0" style="background-color: #262672;">
+                    <img src="{% static 'assets/img/logo.png' %}" alt="logo" class="img-fluid" />
+           
+            </div>
+            </div>
+            <div class="col-sm-9 header-menu pt-2 pb-0">
+                <div class="row">
+                    <div class="col-sm-4 col-8 pl-0">
+                        <span class="menu-icon" onclick="toggle_sidebar()">
+                            <span id="sidebar-toggle-btn"></span>
+                        </span>
+                    </div>             
+                </div>    
+            </div>
+        </div>
+                                <div class="row main-content">
+                                    <!--Sidebar left-->
+                                    <div class="col-sm-3 col-xs-6 sidebar pl-0">
+                                        <div class="inner-sidebar mr-3">
+                                            <br>
+                                            <div class="avatar text-center">
+                                                <p><strong>Admin Dashboard</strong></p>
+                                            </div>
+                                    
+                                            <div class="sidebar-menu-container">
+                                                <ul class="sidebar-menu mt-4 mb-4">
+                                               
+                                                            <li class="parent">
+                                                        <a href="{% url 'dashboard' %}" class=""><i class="fa fa-calendar-o mr-3"> </i>
+                                                            <span class="none">Dashboard </span>
+                                                        </a>
+                                                    </li>
+                                               
+                                             
+                                                    <li class="parent">
+                                                        <a href="{% url 'ajouter' %}" class=""><i class="fa fa-pencil-square mr-3"></i>
+                                                            <span class="none">Ajouter </span>
+                                                        </a>
+                                                    </li>
+                                                    
+                                                    
+                                                      <li class="parent">
+                                                          <a href="{% url 'deleted_users_list' %}" class="">                                                         
+                                                               <i class="fa fa-trash mr-3"></i>
+                                                            <span class="none">les utlisateurs supprimés</span>
+                                                          </a>
+                                                      </li>
+                                                      <li class="parent">
+                                                        <a href="{% url 'logout' %}" class="">
+                                                            <i class="fa fa-sign-out mr-3"></i>
+                                                            <span class="none"> LoGOut</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--Sidebar Naigation Menu-->
+                                        </div>
+                                    </div>
+                                    <!--Sidebar left-->
+
+                                    <!--Content right-->
+                                    <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                                        <div class="row border-bottom mb-4">
+                                            <div class="col-sm-8 pt-2">
+                                                <h6 class="mb-4 bc-header">Utilisateur Supprimé</h6>
+                                            </div>
+                                            <div class="search-rounded mr-3">
+                                                <input type="text" class="form-control search-box" placeholder="Enter keywords.." id="search" />
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
+                                            <!--Order Listing-->
+                                            <div class="manager-list">
+
+                                                <div class="table-responsive manager-list">
+                                                    
+                                                            <h6 class="mb-4 bc-header">Manager</h6>
+                                                       
+                                                    <table class="table table-striped" id="userTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Username</th>
+                                                                <th>Email</th>
+                                                                <th>Telephone</th>
+                                                                <th>Name</th>
+                                                                <th>Restore</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for deleted_user in deleted_users %}
+                                                            <tr>
+                                                                <td>{{ deleted_user.username }}</td>
+                                                                <td>{{ deleted_user.email }}</td>
+                                                                <td>{{ deleted_user.tel }}</td>
+                                                                <td>{{ deleted_user.name }}</td>
+                                                                <!-- Add other fields as needed -->
+                                                                <td>
+                                                                    <form action="{% url 'restore_user' deleted_user.username %}" method="post">
+                                                                        {% csrf_token %}
+                                                                        <button type="submit" class="btn btn-outline-danger">Restore</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="manager-list">
+
+                                                <div class="table-responsive manager-list">
+                                                  
+                                                    
+                                                            <h6 class="mb-4 bc-header">Admin</h6>
+                                                     
+                                                    <table class="table table-striped" id="userTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Username</th>
+                                                                <th>Email</th>
+                                                                <th>Telephone</th>
+                                                                <th>Name</th>
+                                                                <th>Restore</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for deleted_admin in deleted_admin %}
+                                                            <tr>
+                                                                <td>{{ deleted_admin.username }}</td>
+                                                                <td>{{ deleted_admin.email }}</td>
+                                                                <td>{{ deleted_admin.tel }}</td>
+                                                                <td>{{ deleted_admin.name }}</td>
+                                                                <!-- Add other fields as needed -->
+                                                                <td>
+                                                                    <form action="{% url 'restore_user' deleted_admin.username %}" method="post">
+                                                                        {% csrf_token %}
+                                                                        <button type="submit" class="btn btn-outline-danger">Restore</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        document.getElementById("search").addEventListener("keyup", function () {
+                                            var input, filter, table, tr, td, i, txtValue;
+                                            input = document.getElementById("search");
+                                            filter = input.value.toUpperCase();
+                                            table = document.getElementById("userTable");
+                                            tr = table.getElementsByTagName("tr");
+
+                                            for (i = 0; i < tr.length; i++) {
+                                                td = tr[i].getElementsByTagName("td")[0];
+                                                if (td) {
+                                                    txtValue = td.textContent || td.innerText;
+                                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                                        tr[i].style.display = "";
+                                                    } else {
+                                                        tr[i].style.display = "none";
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    </script>
+                                </div>
+
+
+                            </div>
+
+                            <!--Page Wrapper-->
+
+                            <!-- Page JavaScript Files-->
+                            </body>
+                              </html>                      
+
+                                <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+                                <script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
+                                <!--Popper JS-->
+                                <script src="{% static 'assets/js/popper.min.js' %}"></script>
+                                <!--Bootstrap-->
+                                <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+                             
+                                <!--Flot.JS-->
+                                <script src="{% static 'assets/js/charts/jquery.flot.min.js' %}"></script>
+                                <script src="{% static 'assets/js/charts/jquery.flot.pie.min.js' %}"></script>
+                                <script src="{% static 'assets/js/charts/jquery.flot.categories.min.js' %}"></script>
+                                <script src="{% static 'assets/js/charts/jquery.flot.stack.min.js' %}"></script>
+                                <!--Chart JS-->
+                                <script src="{% static 'assets/js/charts/chart.min.js' %}"></script>
+                                <!--Chartist JS-->
+                                <script src="{% static 'assets/js/charts/chartist.min.js' %}"></script>
+                                <script src="{% static 'assets/js/charts/chartist-data.js' %}"></script>
+                                <script src="{% static 'assets/js/charts/demo.js' %}"></script>
+
+                                <!--Nice select-->
+                                <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+                                <!--Custom Js Script-->
+                                <script src="{% static 'assets/js/custom.js' %}"></script>
+                                <!--Custom Js Script-->
+                                <script>
+                                    //Nice select
+                                    $('.bulk-actions').niceSelect();
+                                </script>
+                    
+                          </body>
+                        </html>

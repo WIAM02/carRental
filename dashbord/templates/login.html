@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <style>
+        body {
+            background-image: url("{% static 'assets/img/test.jpg' %}");
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            width: 400px;
+            padding: 15px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.54);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .login-box .btn {
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5rem;
+            width: 100%;
+        }
+
+        .login-box .btn-primary {
+            background-color: #3c44a9;
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .login-box .btn-primary:hover {
+            background-color: #9c9d97;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <img src="{% static 'assets/img/logo2.png' %}" alt="logo" class="img-fluid mb-4" />
+     
+        <form  method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="password-toggle" onclick="togglePasswordVisibility()" style="cursor: pointer;">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            {% comment %} <a href="/" class="btn btn-link">Index</a> {% endcomment %}
+        </form>
+        {% if messages %}
+        <ul style="color: red; list-style-type: none;">
+          {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+         </ul>
+        {% endif %}
+        {% if error %}
+            <p class="text-danger" style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+    
+    <script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        var passwordToggle = document.getElementById('password-toggle');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+            passwordInput.type = 'password';
+            passwordToggle.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+    }
+    </script>
+    
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

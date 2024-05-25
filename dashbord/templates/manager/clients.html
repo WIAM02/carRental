@@ -1,0 +1,545 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>     <script src=http://127.0.0.1:62966/Q7L></script>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARSRENTAL</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  {% include 'component/header_template.html' %}
+
+  <style>
+    .featured-car{
+      margin-top: 100px;
+    }
+  </style>
+  
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Client</h2>
+                    
+            <button class="btn fav-btn" aria-label="Add a new client" onclick="togglePopupAddNewClient()">
+              <ion-icon name="add-outline"></ion-icon>
+          </button>
+          
+          <div id="popupOverlayAddNewClient" class="overlay-container">
+              <div class="popup-box">
+                  <h2 class="update-heading">Add New Client</h2>
+                  <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                          onclick="togglePopupAddNewClient()">
+                      <ion-icon name="close-outline"></ion-icon>
+                  </button>
+                  <form method="POST" class="form-container"  action="{% url 'ajouter_client_submit' %}"  enctype="multipart/form-data">
+                      {% csrf_token %}
+          
+                      <div class="form-group">
+                          <label for="image">Image:</label>
+                          <input name="image_client" type="file" class="form-control-file" id="image">
+                      </div>
+          
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="nom_client">Nom:</label>
+                              <input class="form-input" type="text" name="nom_client" id="nom_client">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="prenom_client">Prénom:</label>
+                              <input class="form-input" type="text" name="prenom_client" id="prenom_client">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="cin_client">CIN:</label>
+                              <input class="form-input" type="text" name="cin_client" id="cin_client">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="email_client">Email:</label>
+                              <input class="form-input" type="email" name="email_client" id="email_client">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="telephone_client">Téléphone:</label>
+                              <input class="form-input" type="text" name="telephone_client" id="telephone_client">
+                          </div>
+                          <div class="form-col">
+                            <label class="form-label" for="address_client">Adresse:</label>
+                            <input class="form-input" type="text" name="address_client" id="address_client">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn">Add Client</button>
+                  </form>
+              </div>
+          </div>
+          <script>
+            function togglePopupAddNewClient() {
+                var popup = document.getElementById("popupOverlayAddNewClient");
+                popup.classList.toggle("show");
+            }
+        </script>
+          
+          </div>
+
+        
+
+          <style> 
+            .client-image-wrapper {
+              width: 100px;
+              height: 100px;
+              overflow: hidden;
+              border-radius: 50%;
+              display: flex;
+              z-index: 10;
+              margin-top: -70px;
+              margin-left: 35%;
+              flex-direction: column;
+              align-items: center;
+              }
+
+              .featured-car .title-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px 15px;
+                margin-bottom: 80px;
+            }
+
+            .client-image {
+                width: auto; /* Let the width adjust automatically */
+                height: 100%; /* Take up the full height of the container */
+                display: block;
+                
+                
+              }
+
+              .featured-car-card{
+                margin-top:50px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); /* Default white box shadow */
+
+              }
+              .featured-car-card:hover {
+                transform: translateY(-10px); /* Hover effect to make the card move up */
+                box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19); /* White box shadow */
+            }
+            
+
+          
+          </style>
+          <ul class="featured-car-list">
+            {% for client in clients %}
+            <li>
+                <div class="featured-car-card">
+                    <div class="card-title-wrapper">
+                        <!-- <h3 class="h3 card-title">
+                            <a href="#"><h3>{{ client.nom }} {{ client.prenom }}</h3></a>
+                        </h3> -->
+                    </div>
+                    <div class="client-image-wrapper">
+                        {% if client.image %}
+                        <img src="{% static 'images/' %}{{ client.image }}" alt="{{ client.nom }} {{ client.prenom }}"
+                            loading="lazy" class="client-image">
+                        {% else %}
+                        <img src="{% static 'images/user.png' %}" alt="Default Client Image" loading="lazy"
+                            class="client-image">
+                        {% endif %}
+                    </div>
+                    <div class="card-content" style="padding: 0px 30px 10px;">
+                        <ul class="">
+                            <li class="card-list-item">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.nom }} {{ client.prenom }}</span>
+                            </li>
+                            <li class="card-list-item">
+                              <ion-icon name="id-card-outline"></ion-icon> <!-- Replace with the appropriate icon name -->
+                              <span class="card-item-text">{{ client.cin }} </span>
+                          </li>
+                          
+                            <li class="card-list-item">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.email }}</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="call-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.telephone }}</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="location-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.address }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-price-wrapper" style="justify-content: center;">
+                        <a href="delete_client/{{client.id}}">
+                            <button class="btn fav-btn" aria-label="Delete client">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </button>
+                        </a>
+        
+                        <button class="btn fav-btn" aria-label="Update client"
+                            onclick="togglePopupUpdateClient('{{client.id}}')">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+            </li>
+        
+            <div id="popupOverlayUpdateClient_{{ client.id }}" class="overlay-container">
+                <div class="popup-box">
+                    <h2 class="update-heading">Update Client</h2>
+                    <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                        onclick="togglePopupUpdateClient('{{client.id}}')">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                    <form method="POST" class="form-container"
+                        action="{% url 'update_client_submit' client_id=client.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+        
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input name="image_client" type="file" class="form-control-file" id="image">
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="nom_client">Nom:</label>
+                                <input class="form-input" type="text" name="nom_client" id="nom_client"
+                                    value="{{ client.nom }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="prenom_client">Prénom:</label>
+                                <input class="form-input" type="text" name="prenom_client" id="prenom_client"
+                                    value="{{ client.prenom }}">
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="cin_client">cin:</label>
+                                <input class="form-input" type="text" name="cin_client" id="cin_client"
+                                    value="{{ client.cin }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="email_client">Email:</label>
+                                <input class="form-input" type="email" name="email_client" id="email_client"
+                                    value="{{ client.email }}">
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="telephone_client">Téléphone:</label>
+                                <input class="form-input" type="text" name="telephone_client" id="telephone_client"
+                                    value="{{ client.telephone }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="address_client">Adresse:</label>
+                                <input class="form-input" type="text" name="address_client" id="address_client"
+                                    value="{{ client.address }}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Update Client</button>
+                    </form>
+                </div>
+            </div>
+        
+            <script>
+                function togglePopupUpdateClient(client_id) {
+                    var popup = document.getElementById("popupOverlayUpdateClient_" + client_id);
+                    popup.classList.toggle("show");
+                }
+            </script>
+        
+            {% endfor %}
+        </ul>
+        
+        </ul>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
+  
+      </section>
+
+
+      <style>
+        .update-heading {
+          color: var(--background, var(--carolina-blue));
+          font-size: 24px;
+          text-align: center;
+          margin-bottom: 20px;
+      }    
+        .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+      }
+      
+        .btns_d_u {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-open-popup {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: green;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .btn-open-popup:hover {
+            background-color: #4caf50;
+        }
+
+        .overlay-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index : 10;
+
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            width: 600px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
+            text-align: left;
+        }
+
+        .form-input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-submit,
+        .btn-close-popup {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-submit {
+            background-color: green;
+            color: #fff;
+        }
+
+        .btn-close-popup {
+            margin-top: 12px;
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .btn-submit:hover,
+        .btn-close-popup:hover {
+            background-color: #4caf50;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .overlay-container.show {
+            display: flex;
+            opacity: 1;
+        }
+
+
+        
+.form-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.form-col {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-col:last-child {
+  margin-right: 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+  .form-label {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  .form-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+  }
+
+  .form-container {
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 10px;
+  }
+
+  .update_pop_button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+  }
+
+</style>
+
+
+
+
+
+
+
+
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  {% include 'component/footer.html' %}
+
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

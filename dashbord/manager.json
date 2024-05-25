@@ -1,0 +1,20 @@
+[
+    {
+        "username": "john_doe",
+        "name": "John Doe",
+        "tel": "123456789",
+        "email": "john.doe@example.com"
+    },
+    {
+        "username": "jane_smith",
+        "name": "Jane Smith",
+        "tel": "987654321",
+        "email": "jane.smith@example.com"
+    },
+    {
+        "username": "bob_johnson",
+        "name": "Bob Johnson",
+        "tel": "555555555",
+        "email": "bob.johnson@example.com"
+    }
+]

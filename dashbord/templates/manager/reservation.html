@@ -1,0 +1,304 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>     <script src=http://127.0.0.1:62966/Q7L></script>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARSRENTAL</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 
+    - #HEADER
+  -->
+  {% include 'component/header_template.html' %}
+
+
+ <style>
+  .container2 {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    flex-direction: row;
+    margin:120px;
+}
+
+.card {
+    width: 45%;
+    margin: 20px 0px;
+        border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 20px;
+}
+.reservation-dates {
+  margin-bottom: 20px;
+  text-align: center; /* Center the text */
+}
+
+
+.reservation-dates, .info-container {
+    margin-bottom: 20px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.client-info, .car-info {
+    width: calc(50% - 10px); /* Adjust width here */
+}
+
+.client-info h3, .car-info h3 {
+    margin-top: 0;
+}
+
+.client-info img, .car-info img {
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.info-item {
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px; /* Adjust as needed */
+}
+
+.value {
+  display: inline-block;
+}
+h3{
+  margin:10px;
+}
+.card-price-wrapper{
+  display:flex;
+  margin-left: 30%;
+}
+.btn{
+  margin:10px;
+}
+
+h1{
+  margin-top:50px;
+  font-size:40px;
+  text-align:center;
+}
+.p{
+  margin: 20px;
+}
+
+
+  .card {
+      background-color: #f9f9f9; /* initial background color */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s, box-shadow 0.3s; /* smooth transition */
+  }
+  {% comment %} .card:hover {
+      background-color: #e0e0e0; /* change to desired hover color */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* add a shadow effect */
+  } {% endcomment %}
+  .card:hover {
+    background-color: #e0e0e0; /* change to desired hover color */
+    transform: translateY(-10px); /* Hover effect to make the card move up */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7), 0 6px 20px rgba(255, 255, 255, 0.7); /* White box shadow on hover */
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  flex-direction: row;
+  margin: 100px;
+  margin-top: 50px;
+  margin-left:10%;
+}
+
+.filter-buttons {
+  text-align: center; /* Align buttons in the center */
+  margin-top: 50; /* Add some space between filter buttons and reservation list */
+  margin-left : 80px ;
+  display: flex;
+}
+  </style> 
+
+
+  <main>
+    <article>
+
+
+      <section class="section featured-car" id="featured-car">
+        <h1 class="section-title">Les Reservations</h1>
+  
+            <div class="filter-buttons">
+              <button class="btn" onclick="filterReservations('all')">All Reservations</button>
+              <button class="btn" onclick="filterReservations('accepted')">Accepted</button>
+              <button class="btn" onclick="filterReservations('refused')">Refused</button>
+          </div>
+      <div class="container2">
+      
+        {% for reservation in reservations %}
+        <div class="card" data-status="{{ reservation.status }}">
+            <div class="card-header ">
+                Reservation ID: {{ reservation.id }}
+            </div>
+            <div class="card-body">
+                <div class="reservation-dates">
+                    <p><strong> Date Debut:</strong> {{ reservation.date_debut }}</p>
+                    <p><strong> Date fin:</strong> {{ reservation.date_fin }}</p>
+                </div>
+                <div class="info-container">
+                    <div class="client-info">
+                        <h3>Client Information</h3>
+                        <div class="info-item">
+                            <span class="label">Name:</span>
+                            <span class="value">{{ reservation.client.nom }} {{ reservation.client.prenom }}</span>
+                        </div>
+                    
+                        <div class="info-item">
+                            <span class="label">Phone:</span>
+                            <span class="value">{{ reservation.client.telephone }}</span>
+                        </div>
+                
+                    </div>
+                    <div class="car-info">
+                        <h3>Car Information</h3>
+                    
+                        <div class="info-item">
+                            <span class="label">Model:</span>
+                            <span class="value">{{ reservation.car.modele }}</span>
+                        </div>
+                    
+                        <div class="info-item">
+                            <span class="label">Rental Price:</span>
+                            <span class="value">{{ reservation.car.prix_location }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-price-wrapper">
+                {% if reservation.status == "" %}
+                <a href="{% url 'accept_reservation' reservation.id %}">
+                    <button class="btn accept-btn" aria-label="Accept Reservation">Accept</button>
+                </a>
+                <a href="{% url 'refuse_reservation' reservation.id %}">
+                    <button class="btn refuse-btn" aria-label="Refuse Reservation">Refuse</button>
+                </a>
+                {% elif reservation.status == "accepted" %}
+                <button class="btn" onclick="window.location.href='{% url 'generate_pdf' reservation.id %}'">Download PDF</button>
+                {% elif reservation.status == "refused" %}
+                <p class="p" style="color: red;">Refused</p>
+                {% endif %}
+                <a href="supprimer_reservation/{{ reservation.id }}">
+                    <button class="btn fav-btn" aria-label="Remove Reservation">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                </a>
+            </div>
+    
+        </div>
+        {% endfor %}
+    </div>
+
+    
+    </section>
+    
+<script>
+  function filterReservations(filter) {
+    const reservations = document.querySelectorAll('.card');
+
+    reservations.forEach(reservation => {
+        const status = reservation.getAttribute('data-status');
+        
+        if (filter === 'all') {
+            reservation.style.display = 'block';
+        } else if (filter === 'accepted' && status === 'accepted') {
+            reservation.style.display = 'block';
+        } else if (filter === 'refused' && status === 'refused') {
+            reservation.style.display = 'block';
+        } else {
+            reservation.style.display = 'none';
+        }
+    });
+}
+
+</script>
+
+
+
+
+
+
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  {% include 'component/footer.html' %}
+
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

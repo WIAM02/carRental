@@ -1,0 +1,162 @@
+[{
+  "_id": {
+    "$oid": "66478e79487550edb660f4f1"
+  },
+  "username": "stofff",
+  "name": "mustapha",
+  "tel": "0626548",
+  "archived": true,
+  "user_id": {
+    "$oid": "66478e79487550edb660f4f0"
+  }
+},
+{
+  "_id": {
+    "$oid": "66478ec6487550edb660f4f3"
+  },
+  "username": "dinaa",
+  "name": "dina",
+  "tel": "021453698",
+  "archived": false,
+  "user_id": {
+    "$oid": "66478ec6487550edb660f4f2"
+  }
+},
+{
+  "_id": {
+    "$oid": "664799c8d2cce57198bb57fc"
+  },
+  "username": "ahmed",
+  "name": "ahmed",
+  "tel": "06666666666",
+  "archived": true,
+  "user_id": {
+    "$oid": "664799c8d2cce57198bb57fb"
+  },
+  "password": "$2b$12$oaTM/SsoD5Rn82jtFx1b.uLLl7V2veFh13TbcBmtskl79b2ZHsAi."
+},
+{
+  "_id": {
+    "$oid": "664799ead2cce57198bb57fe"
+  },
+  "username": "chiraaa",
+  "name": "rihab",
+  "tel": "55555555",
+  "archived": true,
+  "user_id": {
+    "$oid": "664799ead2cce57198bb57fd"
+  },
+  "password": "123"
+},
+{
+  "_id": {
+    "$oid": "66489fc33725aee2a5ee1bc6"
+  },
+  "username": "alia",
+  "name": "aliaaaaa",
+  "tel": "23123",
+  "archived": false,
+  "user_id": {
+    "$oid": "66489fc33725aee2a5ee1bc5"
+  },
+  "password": "12345"
+},
+{
+  "_id": {
+    "$oid": "6648c15aa338d6b6cbce1aaf"
+  },
+  "username": "med",
+  "name": "meddd",
+  "tel": "0662148564",
+  "archived": true,
+  "user_id": {
+    "$oid": "6648c15aa338d6b6cbce1aae"
+  },
+  "password": "123"
+},
+{
+  "_id": {
+    "$oid": "664a495a8373a75b24186bd7"
+  },
+  "username": "adam",
+  "name": "adam",
+  "tel": "0655555626",
+  "archived": false,
+  "user_id": {
+    "$oid": "664a495a8373a75b24186bd6"
+  },
+  "password": "123"
+},
+{
+  "_id": {
+    "$oid": "664b8f8c724c38d0adc25dcf"
+  },
+  "username": "test200",
+  "name": "test",
+  "tel": "06555556262",
+  "archived": true,
+  "user_id": {
+    "$oid": "664b8f8c724c38d0adc25dce"
+  }
+},
+{
+  "_id": {
+    "$oid": "664b9182724c38d0adc25dd1"
+  },
+  "username": "manager1",
+  "name": "manager12",
+  "tel": "06555556262",
+  "archived": false,
+  "user_id": {
+    "$oid": "664b9182724c38d0adc25dd0"
+  },
+  "password": "123"
+},
+{
+  "_id": {
+    "$oid": "664bc783d908ac0940e23b7d"
+  },
+  "username": "manager24",
+  "name": "manager44",
+  "tel": "06555556262",
+  "archived": false,
+  "user_id": {
+    "$oid": "664bc783d908ac0940e23b7c"
+  }
+},
+{
+  "_id": {
+    "$oid": "664bcb02d23e7f3e49806898"
+  },
+  "username": "bbbb",
+  "name": "dzfbsgfn",
+  "tel": "062205041",
+  "archived": false,
+  "user_id": {
+    "$oid": "664bcb02d23e7f3e49806897"
+  }
+},
+{
+  "_id": {
+    "$oid": "664bcbf375ce0e9cc073e7ba"
+  },
+  "username": "hayatv",
+  "name": "ahmed",
+  "tel": "062205041kk",
+  "archived": false,
+  "user_id": {
+    "$oid": "664bcbf375ce0e9cc073e7b9"
+  }
+},
+{
+  "_id": {
+    "$oid": "664dd8a3be3c4806c29c461d"
+  },
+  "username": "manager22",
+  "name": "manager22",
+  "tel": "00000000000",
+  "archived": false,
+  "user_id": {
+    "$oid": "664dd8a3be3c4806c29c461c"
+  }
+}]

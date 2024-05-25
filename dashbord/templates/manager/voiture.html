@@ -1,0 +1,577 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>     
+  <script src=http://127.0.0.1:62966/Q7L></script>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARSRENTAL</title>
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  {% include 'component/header_template.html' %}
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+
+
+
+<style>
+  .filter-buttons {
+    display: flex;
+    gap: 10px; /* Adjust the margin between buttons */
+    margin: 20px;
+
+    }
+    .featured-car{
+      margin-top: 100px;
+    }
+</style>
+
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Featured cars</h2>
+
+
+            <button class="btn fav-btn" aria-label="Add a new car" onclick="togglePopupAddNewCar()">
+              <ion-icon name="add-outline"></ion-icon>
+          </button>
+        
+          <div id="popupOverlayAddNewCar" class="overlay-container">
+            <div class="popup-box">
+              <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                    onclick="togglePopupAddNewCar()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button> 
+                 <h2 class="update-heading">Add New Car</h2>
+                
+                <form method="POST" class="form-container" action="{% url 'ajouter_voiture_submit' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+              <input type="hidden" name="return_url" value="{{ request.path }}">
+
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input name="image" type="file" class="form-control-file" id="image">
+                    </div>
+          
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="marque">Marque:</label>
+                            <input class="form-input" type="text" name="marque" id="marque">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="modele">Modele:</label>
+                            <input class="form-input" type="text" name="modele" id="modele">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="matricule">Matricule:</label>
+                            <input class="form-input" type="text" name="matricule" id="matricule">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="annee">Année:</label>
+                            <input class="form-input" type="text" name="annee" id="annee">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="capacity">Capacity:</label>
+                            <input class="form-input" type="text" name="capacity" id="capacity">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="fuel_type">Type de carburant:</label>
+                            <input class="form-input" type="text" name="fuel_type" id="fuel_type">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="kilometrage">Kilometrage:</label>
+                            <input class="form-input" type="text" name="kilometrage" id="kilometrage">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="transmission">Transmission:</label>
+                            <input class="form-input" type="text" name="transmission" id="transmission">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="couleur">Couleur:</label>
+                            <input class="form-input" type="text" name="couleur" id="couleur">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="prix_location">Prix Location:</label>
+                            <input class="form-input" type="text" name="prix_location" id="prix_location">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Add Car</button>
+                </form>
+            </div>
+          </div>
+          
+                                    
+            {% comment %} <a href="#" class="featured-car-link">
+              <span>View more</span>
+
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a> {% endcomment %}
+
+
+          </div>
+
+          <div class="filter-buttons">
+            <button class="btn" onclick="filterCars('all')">All Cars</button>
+            <button class="btn" onclick="filterCars('available')">Available</button>
+            <button class="btn" onclick="filterCars('unavailable')">Unavailable</button>
+          </div>
+          
+
+        
+
+      
+        
+          <ul class="featured-car-list">
+            {% for voiture in voitures %}
+            <li data-availability="{{ voiture.disponibilite }}">
+              <div class="featured-car-card">
+                <div class="card-title-wrapper">
+                  <h3 class="h3 card-title">
+                    <a href="#">Marque: {{ voiture.marque }}</a>
+                    {% comment %} <a href="#">Disponibilité: {{ voiture.disponibilite }}</a> {% endcomment %}
+                  </h3>
+                </div>
+          
+                <figure class="card-banner">
+                  <img src="{% static 'images/' %}{{ voiture.image }}" alt="{{ voiture.modele }}" loading="lazy" width="440" height="300" class="w-100">
+                </figure>
+          
+                <div class="card-content">
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#"><strong>{{ voiture.modele }}</strong></a>
+                    </h3>
+                    <data class="year" value="2021">{{ voiture.annee }}</data>
+                  </div>
+          
+                  <div class="card-list">
+                    <div class="card-list-item">
+                      <ion-icon name="car-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.matricule }}</span>
+                    </div>
+                    <div class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.capacity }} People</span>
+                    </div>
+                    <div class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.fuel_type }}</span>
+                    </div>
+                    <div class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.kilometrage }} km / 1-litre</span>
+                    </div>
+                    <div class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.transmission }}</span>
+                    </div>
+                    <div class="card-list-item">
+                      <ion-icon name="color-palette-outline"></ion-icon>
+                      <span class="card-item-text">{{ voiture.couleur }}</span>
+                    </div>
+                  </div>
+                  
+          
+                  <div class="card-price-wrapper">
+                    <p class="card-price">
+                      <strong>{{ voiture.prix_location }} DH</strong> / Jour
+                    </p>
+          
+                    <a href="supprimer_voiture/{{ voiture.id }}">
+                      <button class="btn fav-btn" aria-label="Delete car">
+                        <ion-icon name="trash-outline"></ion-icon>
+                      </button>
+                    </a>
+                  
+          
+                    <button class="btn fav-btn" aria-label="Update car" onclick="togglePopup('{{ voiture.id }}')">
+                      <ion-icon name="create-outline"></ion-icon>
+                    </button>
+          
+                  
+
+                    <a href="change_dispo/{{ voiture.id }}">
+                      <button class="btn fav-btn" aria-label="Delete car">
+                        change dispo
+                      </button>
+                    </a>
+                    <button class="btn" onclick="location.href='{% url 'reserve_car' voiture_id=voiture.id %}'">Réserver</button>
+                  </div>
+                </div>
+              </div>
+          
+              <div  id="popupOverlay{{ voiture.id }}" class="overlay-container">
+                <div class="popup-box">
+                  <h2 class="update-heading">Update Car</h2>
+                  <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close popup" onclick="togglePopup('{{ voiture.id }}')">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </button>
+                  <form enctype="multipart/form-data" method="POST" class="form-container" action="{% url 'update_voiture_submit' voiture_id=voiture.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="image">Image:</label>
+                      <input name="image" type="file" class="form-control-file" id="image">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-col">
+                        <label class="form-label" for="marque">Marque:</label>
+                        <input class="form-input" type="text" name="marque" id="marque" value="{{ voiture.marque }}">
+                      </div>
+                      <div class="form-col">
+                        <label class="form-label" for="modele">Modele:</label>
+                        <input class="form-input" type="text" name="modele" id="modele" value="{{ voiture.modele }}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-col">
+                        <label class="form-label" for="matricule">Matricule:</label>
+                        <input class="form-input" type="text" name="matricule" id="matricule" value="{{ voiture.matricule }}">
+                      </div>
+                      <div class="form-col">
+                        <label class="form-label" for="annee">Année:</label>
+                        <input class="form-input" type="text" name="annee" id="annee" value="{{ voiture.annee }}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-col">
+                        <label class="form-label" for="capacity">Capacity:</label>
+                        <input class="form-input" type="text" name="capacity" id="capacity" value="{{ voiture.capacity }}">
+                      </div>
+                      <div class="form-col">
+                        <label class="form-label" for="fuel_type">Type de carburant:</label>
+                        <input class="form-input" type="text" name="fuel_type" id="fuel_type" value="{{ voiture.fuel_type }}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-col">
+                        <label class="form-label" for="kilometrage">Kilometrage:</label>
+                        <input class="form-input" type="text" name="kilometrage" id="kilometrage" value="{{ voiture.kilometrage }}">
+                      </div>
+                      <div class="form-col">
+                        <label class="form-label" for="transmission">Transmission:</label>
+                        <input class="form-input" type="text" name="transmission" id="transmission" value="{{ voiture.transmission }}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-col">
+                        <label class="form-label" for="couleur">Couleur:</label>
+                        <input class="form-input" type="text" name="couleur" id="couleur" value="{{ voiture.couleur }}">
+                      </div>
+                      <div class="form-col">
+                        <label class="form-label" for="prix_location">Prix Location:</label>
+                        <input class="form-input" type="text" name="prix_location" id="prix_location" value="{{ voiture.prix_location }}">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn">Update Car</button>
+                  </form>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          
+          <script>
+            function togglePopup(serviceId) {
+              const overlay = document.getElementById('popupOverlay' + serviceId);
+              overlay.classList.toggle('show');
+            }
+            
+            function togglePopupAddNewCar() {
+              const overlay = document.getElementById('popupOverlayAddNewCar');
+              overlay.classList.toggle('show');
+            }
+            
+            function filterCars(filter) {
+              const carList = document.querySelector('.featured-car-list');
+              const cars = carList.querySelectorAll('li');
+              
+              cars.forEach(car => {
+                const availability = car.getAttribute('data-availability');
+                if (filter === 'all') {
+                  car.style.display = 'block';
+                } else if (filter === 'available' && availability === '1') {
+                  car.style.display = 'block';
+                } else if (filter === 'unavailable' && availability === '0') {
+                  car.style.display = 'block';
+                } else {
+                  car.style.display = 'none';
+                }
+              });
+            }
+          </script>
+        </div>
+
+
+      </section>
+
+
+      <style>
+                .update-heading {
+                  color: var(--background, var(--carolina-blue));
+                  font-size: 24px;
+                  text-align: center;
+                  margin-bottom: 20px;
+              }    
+                .close-btn {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  border: none;
+                  font-size: 20px;
+                  cursor: pointer;
+              }
+              
+                .btns_d_u {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .btn-open-popup {
+                    padding: 12px 24px;
+                    font-size: 18px;
+                    background-color: green;
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                }
+
+                .btn-open-popup:hover {
+                    background-color: #4caf50;
+                }
+
+                .overlay-container {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index : 10;
+
+                }
+
+                .popup-box {
+                    background: #fff;
+                    padding: 24px;
+                    border-radius: 12px;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+                    width: 600px;
+                    text-align: center;
+                    opacity: 0;
+                    transform: scale(0.8);
+                    animation: fadeInUp 0.5s ease-out forwards;
+                }
+
+                .form-container {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .form-label {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                    color: #444;
+                    text-align: left;
+                }
+
+                .form-input {
+                    padding: 10px;
+                    margin-bottom: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .btn-submit,
+                .btn-close-popup {
+                    padding: 12px 24px;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease, color 0.3s ease;
+                }
+
+                .btn-submit {
+                    background-color: green;
+                    color: #fff;
+                }
+
+                .btn-close-popup {
+                    margin-top: 12px;
+                    background-color: #e74c3c;
+                    color: #fff;
+                }
+
+                .btn-submit:hover,
+                .btn-close-popup:hover {
+                    background-color: #4caf50;
+                }
+
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .overlay-container.show {
+                    display: flex;
+                    opacity: 1;
+                }
+
+
+                
+        .form-row {
+          display: flex;
+          margin-bottom: 10px;
+        }
+
+        .form-col {
+          flex: 1;
+          margin-right: 10px;
+        }
+
+        .form-col:last-child {
+          margin-right: 0;
+        }
+
+        .form-label {
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        .form-input {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+        }
+
+          .form-label {
+              display: block;
+              margin-bottom: 5px;
+          }
+
+          .form-input {
+              width: 100%;
+              padding: 8px;
+              margin-bottom: 15px;
+              box-sizing: border-box;
+          }
+
+          .form-container {
+              max-height: 80vh;
+              overflow-y: auto;
+              padding: 10px;
+          }
+
+          .update_pop_button {
+              display: block;
+              width: 100%;
+              padding: 10px;
+              margin-top: 10px;
+              background-color: #4CAF50;
+              color: white;
+              border: none;
+              cursor: pointer;
+              border-radius: 5px;
+          }
+
+</style>
+
+
+
+
+
+
+
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+  {% include 'component/footer.html' %}
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

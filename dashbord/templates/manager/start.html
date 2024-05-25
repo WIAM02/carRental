@@ -1,0 +1,1518 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>     <script src=http://127.0.0.1:62966/Q7L></script>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARSRENTAL</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'bootstrap-4.0.0-dist/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap-4.0.0-dist/js/jquery.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="{% static 'bootstrap-4.0.0-dist/js/bootstrap.min.js' %}"></script>
+
+    <style>
+      main {
+        background: rgb(187,8,8);
+background: linear-gradient(96deg, rgba(187,8,8,1) 0%, rgba(17,16,71,1) 23%, rgba(25,24,85,1) 69%, rgba(187,8,8,1) 100%);
+        {% comment %} linear
+        background: rgb(187,8,8);
+background: linear-gradient(90deg, rgba(187,8,8,1) 0%, rgba(17,16,71,1) 10%, rgba(25,24,85,1) 91%, rgba(187,8,8,1) 100%); {% endcomment %}
+        {% comment %} background: rgb(2,0,36);
+        background: linear-gradient(103deg, rgba(2,0,36,1) 0%, rgba(38,38,114,1) 43%, rgba(255,0,0,1) 96%); {% endcomment %}
+        {% comment %} background: hsl(0deg 0% 0%); {% endcomment %}
+        {% comment %} background: hsl(216deg 49.11% 13.73%); {% endcomment %}
+        {% comment %} background: hsl(0deg 0% 0%); {% endcomment %}
+        overflow-x: hidden;
+    }
+      .section .section-title {
+      color: white;
+    }
+
+    {% comment %} background: hsl(216deg 49.11% 13.73%); {% endcomment %}
+    {% comment %} background: hsl(0deg 0% 0%); {% endcomment %}
+
+   .container .featured-car-link span {
+      color: white;
+      font-size: 20px;
+    }
+    </style>
+</head>
+
+<body>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  {% include 'component/header_template.html' %}
+
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      {% comment %} <section class="section hero" id="home">
+        <div class="container">
+
+          <div class="hero-content">
+            <h2 class="h1 hero-title">The easy way to takeover a lease</h2>
+
+            <p class="hero-text">
+              Live in New York, New Jerset and Connecticut!
+            </p>
+          </div>
+
+          <div class="hero-banner"></div>
+
+          <form action="" class="hero-form">
+
+            <div class="input-wrapper">
+              <label for="input-1" class="input-label">Car, model, or brand</label>
+
+              <input type="text" name="car-model" id="input-1" class="input-field"
+                placeholder="What car are you looking?">
+            </div>
+
+            <div class="input-wrapper">
+              <label for="input-2" class="input-label">Max. monthly payment</label>
+
+              <input type="text" name="monthly-pay" id="input-2" class="input-field" placeholder="Add an amount in $">
+            </div>
+
+            <div class="input-wrapper">
+              <label for="input-3" class="input-label">Make Year</label>
+
+              <input type="text" name="year" id="input-3" class="input-field" placeholder="Add a minimal make year">
+            </div>
+
+            <button type="submit" class="btn">Search</button>
+
+          </form>
+
+        </div>
+      </section> {% endcomment %}
+
+      <section class="section hero" id="home">
+        <div class="container2">
+
+            <h2>Découvrez Votre Prochaine Aventure avec Nous !</h2>
+            <p>Embarquez pour un voyage inoubliable avec nos services de location de voitures haut de gamme. Nous nous engageons à vous offrir l'expérience de voyage ultime.</p>
+            
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{% static 'images/i8 (1).jpg' %}" alt="First slide">
+                        <div class="carousel-caption">
+                            <h5>Vivez le Luxe</h5>
+                            <p>Offrez-vous le confort et l'élégance de nos véhicules de luxe.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'images/i9.jpg' %}" alt="Second slide">
+                        <div class="carousel-caption">
+                            <h5>L'Aventure Vous Attend</h5>
+                            <p>Prenez la route et explorez de nouvelles destinations en toute confiance.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'images/i12.avif' %}" alt="Third slide">
+                        <div class="carousel-caption">
+                            <h5>Créez des Souvenirs</h5>
+                            <p>Capturez des moments inoubliables lors de votre voyage avec nous.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Suivant</span>
+                </a>
+            </div>
+        
+      </section>
+
+    <script>
+        $('.carousel').carousel();
+    </script>
+
+    <style>
+      .carousel-item {
+          width: 200; /* Set a fixed height for the carousel */
+      }
+      .carousel-item img {
+        object-fit: cover;
+        width: 100%;
+        height: 100vh;
+        border-radius:20px;
+      }
+      .hero .container2 {
+        margin-top: -250px;
+        width: 100%;
+        {% comment %} margin-left: 11%; {% endcomment %}
+    }
+  </style>
+  
+      <!-- 
+        - #FEATURED CAR
+      -->
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Featured cars</h2>
+
+
+            <button class="btn fav-btn" aria-label="Add a new car" onclick="togglePopupAddNewCar()">
+              <ion-icon name="add-outline"></ion-icon>
+          </button>
+        
+          <div id="popupOverlayAddNewCar" class="overlay-container">
+            <div class="popup-box">
+                <h2 class="update-heading">Add New Car</h2>
+                <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                    onclick="togglePopupAddNewCar()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+                <form method="POST" class="form-container" action="{% url 'ajouter_voiture_submit' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+          
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input name="image" type="file" class="form-control-file" id="image">
+                    </div>
+          
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="marque">Marque:</label>
+                            <input class="form-input" type="text" name="marque" id="marque">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="modele">Modele:</label>
+                            <input class="form-input" type="text" name="modele" id="modele">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="matricule">Matricule:</label>
+                            <input class="form-input" type="text" name="matricule" id="matricule">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="annee">Année:</label>
+                            <input class="form-input" type="text" name="annee" id="annee">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="capacity">Capacity:</label>
+                            <input class="form-input" type="text" name="capacity" id="capacity">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="fuel_type">Type de carburant:</label>
+                            <input class="form-input" type="text" name="fuel_type" id="fuel_type">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="kilometrage">Kilometrage:</label>
+                            <input class="form-input" type="text" name="kilometrage" id="kilometrage">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="transmission">Transmission:</label>
+                            <input class="form-input" type="text" name="transmission" id="transmission">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="couleur">Couleur:</label>
+                            <input class="form-input" type="text" name="couleur" id="couleur">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="prix_location">Prix Location:</label>
+                            <input class="form-input" type="text" name="prix_location" id="prix_location">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Add Car</button>
+                </form>
+            </div>
+          </div>
+          
+                                    
+          <a href="{% url 'voiture' %}" class="featured-car-link">
+            <span>View more</span>
+
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a>
+          </div>
+
+          <ul class="featured-car-list">
+            {% for voiture in voitures|slice:":3" %}
+              
+          
+            <li>
+              <div class="featured-car-card">
+                <div class="card-title-wrapper">
+                  <h3 class="h3 card-title">
+                    <a href="#"><h3>Marque : {{ voiture.marque}} </h3> </a>
+                  </h3>
+                </div>
+
+                <figure class="card-banner">
+                  <img src="{% static 'images/' %}{{ voiture.image}}" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
+                    class="w-100">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-title-wrapper">
+                    <h3 class="h3 card-title">
+                      <a href="#"><strong> {{ voiture.modele}} </strong>  </a>
+                    </h3>
+                    
+
+                    <data class="year" value="2021">{{ voiture.annee}}</data>
+                  </div>
+
+                  <ul class="card-list">
+
+                    <li class="card-list-item">
+                      <ion-icon name="car-outline"></ion-icon>
+
+                      <span class="card-item-text">{{ voiture.matricule}}</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="people-outline"></ion-icon>
+
+                      <span class="card-item-text">{{ voiture.capacity }} People</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="flash-outline"></ion-icon>
+
+                      <span class="card-item-text">{{voiture.fuel_type}}</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="speedometer-outline"></ion-icon>
+
+                      <span class="card-item-text">{{ voiture.kilometrage }}km / 1-litre</span>
+                    </li>
+
+                    <li class="card-list-item">
+                      <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                      <span class="card-item-text">{{voiture.transmission}}</span>
+                    </li>
+                    <li class="card-list-item">
+                      <ion-icon name="color-palette-outline"></ion-icon>
+
+                      <span class="card-item-text">{{voiture.couleur}}</span>
+                    </li>
+
+                  </ul>
+
+                  <div class="card-price-wrapper">
+
+                    <p class="card-price">
+                      <strong>${{ voiture.prix_location}}</strong> / Jour
+                    </p>
+
+                    <a href=" supprimer_voiture/{{voiture.id}}" >
+                    <button class="btn fav-btn" aria-label="Add to favourite list">
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                  </a>
+
+                    <button class="btn fav-btn" aria-label="Add to favourite list"  
+                    onclick="togglePopup('{{voiture.id}}')">
+                      <ion-icon name="create-outline"></ion-icon>
+                    </button>
+                  
+                    <a href="change_dispo/{{ voiture.id }}">
+                      <button class="btn fav-btn" aria-label="Delete car">
+                        change dispo
+                      </button>
+                    </a>
+                    {% comment %} <button class="btn fav-btn" aria-label="Add to favourite list">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button> {% endcomment %}
+
+                    <button class="btn" onclick="location.href= '{% url 'reserve_car' voiture_id=voiture.id %}'">Réserver</button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            
+            <div id="popupOverlay{{voiture.id}}" class="overlay-container">
+              <div class="popup-box">
+                <h2 class="update-heading">Update Car</h2>
+                <button class="btn fav-btn close-btn"  style="background-color: #ff5733;" aria-label="Add to favourite list" onclick="togglePopup('{{voiture.id }}')">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </button>
+                 <form method="POST" class="form-container" action="{% url 'update_voiture_submit' voiture_id=voiture.id %}">
+                      {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input name="image" type="file" class="form-control-file" id="image">
+                    </div>
+
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="marque">Marque:</label>
+                              <input class="form-input" type="text" name="marque" id="marque" value="{{ voiture.marque }}">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="modele">Modele:</label>
+                              <input class="form-input" type="text" name="modele" id="modele" value="{{ voiture.modele }}">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="matricule">Matricule:</label>
+                              <input class="form-input" type="text" name="matricule" id="matricule" value="{{ voiture.matricule }}">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="annee">Année:</label>
+                              <input class="form-input" type="text" name="annee" id="annee" value="{{ voiture.annee }}">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="capacity">Capacity:</label>
+                              <input class="form-input" type="text" name="capacity" id="capacity" value="{{ voiture.capacity }}">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="fuel_type">Fuel Type:</label>
+                              <input class="form-input" type="text" name="fuel_type" id="fuel_type" value="{{ voiture.fuel_type }}">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="kilometrage">Kilometrage:</label>
+                              <input class="form-input" type="text" name="kilometrage" id="kilometrage" value="{{ voiture.kilometrage }}">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="transmission">Transmission:</label>
+                              <input class="form-input" type="text" name="transmission" id="transmission" value="{{ voiture.transmission }}">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="couleur">Couleur:</label>
+                              <input class="form-input" type="text" name="couleur" id="couleur" value="{{ voiture.couleur }}">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="prix_location">Prix Location:</label>
+                              <input class="form-input" type="text" name="prix_location" id="prix_location" value="{{ voiture.prix_location }}">
+                          </div>
+                      </div>
+                      <button type="submit" class="btn">Update Car</button>
+                  </form> 
+              </div>
+          </div>
+          
+            
+            </li>
+        {% endfor %}
+
+
+          </ul>
+
+        </div>
+        <script>
+          function togglePopup(serviceId) {
+              const overlay = document.getElementById('popupOverlay' + serviceId);
+              overlay.classList.toggle('show');
+          }
+
+        function togglePopupAddNewCar() {
+            const overlay = document.getElementById('popupOverlayAddNewCar');
+            overlay.classList.toggle('show');
+            }
+        </script>
+
+      </section>
+
+
+      <section class="section featured-car" id="featured-car">
+        <div class="container">
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Client</h2>
+                    
+            <button class="btn fav-btn" aria-label="Add a new client" onclick="togglePopupAddNewClient()">
+              <ion-icon name="add-outline"></ion-icon>
+          </button>
+          
+          <div id="popupOverlayAddNewClient" class="overlay-container">
+              <div class="popup-box">
+                  <h2 class="update-heading">Add New Client</h2>
+                  <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                          onclick="togglePopupAddNewClient()">
+                      <ion-icon name="close-outline"></ion-icon>
+                  </button>
+                  <form method="POST" class="form-container"  action="{% url 'ajouter_client_submit' %}"  enctype="multipart/form-data">
+                      {% csrf_token %}
+          
+                      <div class="form-group">
+                          <label for="image">Image:</label>
+                          <input name="image_client" type="file" class="form-control-file" id="image">
+                      </div>
+          
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="nom_client">Nom:</label>
+                              <input class="form-input" type="text" name="nom_client" id="nom_client">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="prenom_client">Prénom:</label>
+                              <input class="form-input" type="text" name="prenom_client" id="prenom_client">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="age_client">Age:</label>
+                              <input class="form-input" type="text" name="age_client" id="age_client">
+                          </div>
+                          <div class="form-col">
+                              <label class="form-label" for="email_client">Email:</label>
+                              <input class="form-input" type="email" name="email_client" id="email_client">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-col">
+                              <label class="form-label" for="telephone_client">Téléphone:</label>
+                              <input class="form-input" type="text" name="telephone_client" id="telephone_client">
+                          </div>
+                          <div class="form-col">
+                            <label class="form-label" for="address_client">Adresse:</label>
+                            <input class="form-input" type="text" name="address_client" id="address_client">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn">Add Client</button>
+                  </form>
+              </div>
+          </div>
+          <script>
+            function togglePopupAddNewClient() {
+                var popup = document.getElementById("popupOverlayAddNewClient");
+                popup.classList.toggle("show");
+            }
+        </script>
+          
+            <a href="{% url 'client' %}" class="featured-car-link">
+              <span>View more</span>
+
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a>
+          </div>
+
+        
+
+          <style> 
+                    .client-image-wrapper {
+                      width: 100px;
+                      height: 100px;
+                      overflow: hidden;
+                      border-radius: 50%;
+                      display: flex;
+                      z-index: 10;
+                      margin-top: -70px;
+                      margin-left: 35%;
+                      flex-direction: column;
+                      align-items: center;
+            }
+            .featured-car .title-wrapper {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: center;
+              gap: 10px 15px;
+              margin-bottom: 80px;
+            }
+
+            .client-image {
+                width: auto; /* Let the width adjust automatically */
+                height: 100%; /* Take up the full height of the container */
+                display: block;
+                
+              }
+
+          
+          </style>
+          <ul class="featured-car-list">
+            {% for client in clients|slice:":3"%}
+            <li>
+                <div class="featured-car-card">
+                    <div class="card-title-wrapper">
+                        <!-- <h3 class="h3 card-title">
+                            <a href="#"><h3>{{ client.nom }} {{ client.prenom }}</h3></a>
+                        </h3> -->
+                    </div>
+                    <div class="client-image-wrapper">
+                        {% if client.image %}
+                        <img src="{% static 'images/' %}{{ client.image }}" alt="{{ client.nom }} {{ client.prenom }}"
+                            loading="lazy" class="client-image">
+                        {% else %}
+                        <img src="{% static 'images/user.png' %}" alt="Default Client Image" loading="lazy"
+                            class="client-image">
+                        {% endif %}
+                    </div>
+                    <div class="card-content" style="padding: 0px 30px 10px;">
+                        <ul class="">
+                            <li class="card-list-item">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.nom }} {{ client.prenom }}</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.age }} years old</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.email }}</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="call-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.telephone }}</span>
+                            </li>
+                            <li class="card-list-item">
+                                <ion-icon name="location-outline"></ion-icon>
+                                <span class="card-item-text">{{ client.address }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-price-wrapper" style="justify-content: center;">
+                        <a href="delete_client/{{client.id}}">
+                            <button class="btn fav-btn" aria-label="Delete client">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </button>
+                        </a>
+        
+                        <button class="btn fav-btn" aria-label="Update client"
+                            onclick="togglePopupUpdateClient('{{client.id}}')">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+            </li>
+        
+            <div id="popupOverlayUpdateClient_{{ client.id }}" class="overlay-container">
+                <div class="popup-box">
+                    <h2 class="update-heading">Update Client</h2>
+                    <button class="btn fav-btn close-btn" style="background-color: #ff5733;" aria-label="Close"
+                        onclick="togglePopupUpdateClient('{{client.id}}')">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                    <form method="POST" class="form-container"
+                        action="{% url 'update_client_submit' client_id=client.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+        
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input name="image_client" type="file" class="form-control-file" id="image">
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="nom_client">Nom:</label>
+                                <input class="form-input" type="text" name="nom_client" id="nom_client"
+                                    value="{{ client.nom }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="prenom_client">Prénom:</label>
+                                <input class="form-input" type="text" name="prenom_client" id="prenom_client"
+                                    value="{{ client.prenom }}">
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="age_client">Age:</label>
+                                <input class="form-input" type="text" name="age_client" id="age_client"
+                                    value="{{ client.age }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="email_client">Email:</label>
+                                <input class="form-input" type="email" name="email_client" id="email_client"
+                                    value="{{ client.email }}">
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label" for="telephone_client">Téléphone:</label>
+                                <input class="form-input" type="text" name="telephone_client" id="telephone_client"
+                                    value="{{ client.telephone }}">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label" for="address_client">Adresse:</label>
+                                <input class="form-input" type="text" name="address_client" id="address_client"
+                                    value="{{ client.address }}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Update Client</button>
+                    </form>
+                </div>
+            </div>
+        
+            <script>
+                function togglePopupUpdateClient(client_id) {
+                    var popup = document.getElementById("popupOverlayUpdateClient_" + client_id);
+                    popup.classList.toggle("show");
+                }
+            </script>
+        
+            {% endfor %}
+        </ul>
+        
+        </ul>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
+  
+      </section>
+
+
+      <style>
+                    .update-heading {
+                      color: var(--background, var(--carolina-blue));
+                      font-size: 24px;
+                      text-align: center;
+                      margin-bottom: 20px;
+                  }    
+                    .close-btn {
+                      position: absolute;
+                      top: 10px;
+                      right: 10px;
+                      border: none;
+                      font-size: 20px;
+                      cursor: pointer;
+                  }
+                  
+                    .btns_d_u {
+                        display: flex;
+                        gap: 10px;
+                    }
+
+                    .btn-open-popup {
+                        padding: 12px 24px;
+                        font-size: 18px;
+                        background-color: green;
+                        color: #fff;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+
+                    }
+
+                    .btn-open-popup:hover {
+                        background-color: #4caf50;
+                    }
+
+                    .overlay-container {
+                        display: none;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.6);
+                        justify-content: center;
+                        align-items: center;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        z-index : 10;
+
+                    }
+
+                    .popup-box {
+                        background: #fff;
+                        padding: 24px;
+                        border-radius: 12px;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+                        width: 600px;
+                        text-align: center;
+                        opacity: 0;
+                        transform: scale(0.8);
+                        animation: fadeInUp 0.5s ease-out forwards;
+                    }
+
+                    .form-container {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .form-label {
+                        margin-bottom: 10px;
+                        font-size: 16px;
+                        color: #444;
+                        text-align: left;
+                    }
+
+                    .form-input {
+                        padding: 10px;
+                        margin-bottom: 20px;
+                        border: 1px solid #ccc;
+                        border-radius: 8px;
+                        font-size: 16px;
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+
+                    .btn-submit,
+                    .btn-close-popup {
+                        padding: 12px 24px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease, color 0.3s ease;
+                    }
+
+                    .btn-submit {
+                        background-color: green;
+                        color: #fff;
+                    }
+
+                    .btn-close-popup {
+                        margin-top: 12px;
+                        background-color: #e74c3c;
+                        color: #fff;
+                    }
+
+                    .btn-submit:hover,
+                    .btn-close-popup:hover {
+                        background-color: #4caf50;
+                    }
+
+                    @keyframes fadeInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .overlay-container.show {
+                        display: flex;
+                        opacity: 1;
+                    }
+
+
+                    
+            .form-row {
+              display: flex;
+              margin-bottom: 10px;
+            }
+
+          .form-col {
+            flex: 1;
+            margin-right: 10px;
+          }
+
+          .form-col:last-child {
+            margin-right: 0;
+          }
+
+          .form-label {
+            display: block;
+            margin-bottom: 5px;
+          }
+
+          .form-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+          }
+
+            .form-label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+            }
+
+            .form-container {
+                max-height: 80vh;
+                overflow-y: auto;
+                padding: 10px;
+            }
+
+            .update_pop_button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+</style>
+
+
+
+
+
+
+
+      <!-- 
+        - #GET START
+      -->
+<style>
+  .section.get-start {
+    text-align: center;
+  }
+  
+  .get-start-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .get-start-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .card-link:hover {
+    text-decoration: underline;
+  }
+  
+ .get-start-card  p{
+    font-size:20px;
+  }
+</style>
+      <section class="section get-start">
+        <div class="container">
+
+          <h2 class="h2 section-title">Les Statistiques</h2>
+{% comment %} 
+          <ul class="get-start-list">
+
+            <li>
+              <div class="get-start-card">
+
+                
+                <div class="card-icon icon-3">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <h3 class="card-title">{{ total_clients }}</h3>
+
+                
+
+                <a href="{% url 'client' %}" class="card-link">Voir Client</a>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+
+                <div class="card-icon icon-2">
+                  <ion-icon name="car-outline"></ion-icon>
+                </div>
+
+                <h3 class="card-title">{{total_cars}}</h3>
+
+                <a href="{% url 'voiture' %}" class="card-link">Voir Client</a>
+
+
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+
+                <div class="card-icon icon-1">
+                  <ion-icon name="person-add-outline"></ion-icon>
+                </div>
+                <p class="card-title">Accepted Reservations</p>
+                <h3 class="card-title">{{ accepted_reservations }}</h3>
+
+        
+
+              </div>
+            </li>
+
+            <li>
+              <div class="get-start-card">
+
+                <div class="card-icon icon-4">
+                  <ion-icon name="card-outline"></ion-icon>
+                </div>
+
+                <p class="card-title">Refused Reservations</p>
+                <h3 class="card-title">{{ refused_reservations  }}</h3>
+
+        
+              </div>
+            </li>
+
+          </ul> {% endcomment %}
+
+
+
+          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Nombre de Client</h6>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{ total_clients }}</span></h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Nombre de voiture</h6>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>{{ total_cars }}</span></h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Refused Reservations</h6>
+                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>{{ refused_reservations }}</span></h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Accepted Reservations</h6>
+                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>{{ accepted_reservations }}</span></h2>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+        </div>
+
+
+
+<style>
+  .order-card {
+    color: #fff;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+</style>
+
+
+
+
+
+
+
+
+
+        
+      </section>
+
+
+
+
+
+      <!-- 
+        - #BLOG
+      -->
+      <style>
+        .circular-image {
+          width: 100px; /* Adjust size as needed */
+          height: auto; /* Maintain aspect ratio */
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+          margin: 0 auto;
+      }
+
+      figcaption {
+          color: white;
+          font-size: 20px;
+      }
+
+      .card-banner {
+          position: relative;
+          text-align: center;
+      }
+
+      .card-banner figcaption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          text-align: center;
+          padding: 10px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+
+      .card-banner:hover figcaption {
+          opacity: 1;
+      }
+
+      {% comment %} .blog-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+      } {% endcomment %}
+
+      {% comment %} .blog-list li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin: 10px;
+      } {% endcomment %}
+      </style>
+      <section class="section blog" id="blog">
+        <div class="container">
+            <h2 class="h2 section-title">Nos Collaborateurs </h2>
+            <ul class="blog-list has-scrollbar">
+          
+              <li>
+                  <div>
+                      <figure class="card-banner">
+                          <a href="#">
+                              <img src="{% static 'images/' %}bmw.jpg" alt="Location de voitures à Casablanca" loading="lazy" class="circular-image">
+                          </a>
+                          <figcaption>BMW : Luxe et performance.</figcaption>
+                      </figure>
+                  </div>
+              </li>
+          
+              <li>
+                  <div>
+                      <figure class="card-banner">
+                          <a href="#">
+                              <img src="{% static 'images/' %}audi.jpg" alt="Location de voitures à Casablanca" loading="lazy" class="circular-image">
+                          </a>
+                          <figcaption>Audi : Élégance et technologie.</figcaption>
+                      </figure>
+                  </div>
+              </li>
+          
+              <li>
+                  <div>
+                      <figure class="card-banner">
+                          <a href="#">
+                              <img src="{% static 'images/' %}mercedes.jpg" alt="Location de voitures à Casablanca" loading="lazy" class="circular-image">
+                          </a>
+                          <figcaption>Mercedes : Confort et prestige.</figcaption>
+                      </figure>
+                  </div>
+              </li>
+
+              <li>
+                <div>
+                    <figure class="card-banner">
+                        <a href="#">
+                            <img src="{% static 'images/' %}dacia3.jpg" alt="Location de voitures à Casablanca" loading="lazy" class="circular-image">
+                        </a>
+                        <figcaption>Dacia : Une marque abordable et fiable.</figcaption>
+                    </figure>
+                </div>
+            </li>
+        
+            <li>
+                <div>
+                    <figure class="card-banner">
+                        <a href="#">
+                            <img src="{% static 'images/' %}toyota2.jpg" alt="Location de voitures à Casablanca" loading="lazy" class="circular-image">
+                        </a>
+                        <figcaption>Toyota : Innovation et durabilité.</figcaption>
+                    </figure>
+                </div>
+            </li>
+          </ul>
+          
+      
+          
+        </div>
+    </section>
+    
+      {% comment %} <section class="section blog" id="blog">
+        <div class="container">
+
+          <h2 class="h2 section-title">Notre positions</h2>
+
+          <ul class="blog-list has-scrollbar">
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/blog-1.jpg" alt="Opening of new offices of the company" loading="lazy"
+                      class="w-100">
+                  </a>
+
+                  <a href="#" class="btn card-badge">Company</a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Opening of new offices of the company</a>
+                  </h3>
+
+                  <div class="card-meta">
+
+                    <div class="publish-date">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="2022-01-14">January 14, 2022</time>
+                    </div>
+
+                    <div class="comments">
+                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+
+                      <data value="114">114</data>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/blog-2.jpg" alt="What cars are most vulnerable" loading="lazy"
+                      class="w-100">
+                  </a>
+
+                  <a href="#" class="btn card-badge">Repair</a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">
+                    <a href="#">What cars are most vulnerable</a>
+                  </h3>
+
+                  <div class="card-meta">
+
+                    <div class="publish-date">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="2022-01-14">January 14, 2022</time>
+                    </div>
+
+                    <div class="comments">
+                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+
+                      <data value="114">114</data>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/blog-3.jpg" alt="Statistics showed which average age" loading="lazy"
+                      class="w-100">
+                  </a>
+
+                  <a href="#" class="btn card-badge">Cars</a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Statistics showed which average age</a>
+                  </h3>
+
+                  <div class="card-meta">
+
+                    <div class="publish-date">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="2022-01-14">January 14, 2022</time>
+                    </div>
+
+                    <div class="comments">
+                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+
+                      <data value="114">114</data>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/blog-4.jpg" alt="What´s required when renting a car?" loading="lazy"
+                      class="w-100">
+                  </a>
+
+                  <a href="#" class="btn card-badge">Cars</a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">
+                    <a href="#">What´s required when renting a car?</a>
+                  </h3>
+
+                  <div class="card-meta">
+
+                    <div class="publish-date">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="2022-01-14">January 14, 2022</time>
+                    </div>
+
+                    <div class="comments">
+                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+
+                      <data value="114">114</data>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner">
+
+                  <a href="#">
+                    <img src="./assets/images/blog-5.jpg" alt="New rules for handling our cars" loading="lazy"
+                      class="w-100">
+                  </a>
+
+                  <a href="#" class="btn card-badge">Company</a>
+
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">
+                    <a href="#">New rules for handling our cars</a>
+                  </h3>
+
+                  <div class="card-meta">
+
+                    <div class="publish-date">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="2022-01-14">January 14, 2022</time>
+                    </div>
+
+                    <div class="comments">
+                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+
+                      <data value="114">114</data>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section> {% endcomment %}
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  {% include 'component/footer.html' %}
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

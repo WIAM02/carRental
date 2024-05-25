@@ -1,0 +1,81 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+<style>
+  .header{
+    {% comment %} background: hsl(216deg 35.21% 5.82%); {% endcomment %}
+    background : #262672;
+  }
+  .navbar-link {
+    /* color: var(--independence); */
+    color: hsl(0deg 0% 85.04%);
+  }
+  body{
+    background: rgb(187,8,8);
+  background: linear-gradient(96deg, rgba(187,8,8,1) 0%, rgba(17,16,71,1) 23%, rgba(25,24,85,1) 69%, rgba(187,8,8,1) 100%);
+  }
+  .section-title{
+    color:white ;
+  }
+</style>
+<header class="header" data-header>
+  <div class="container">
+
+    <div class="overlay" data-overlay></div>
+
+    <a href="#" class="logo">
+      <img src="{% static 'images/' %}logo.png" alt="Ridex logo">
+    </a>
+
+    <nav class="navbar" data-navbar>
+      <ul class="navbar-list">
+
+        <li>
+          <a href="{% url 'index' %}" class="navbar-link" data-nav-link>Home</a>
+        </li>
+
+        <li>
+          <a href="{% url 'voiture' %}" class="navbar-link" data-nav-link>Explore cars</a>
+        </li>
+
+        <li>
+          <a href="{% url 'client' %}" class="navbar-link" data-nav-link>Client</a>
+        </li>
+
+        <li>
+          <a href="{% url 'reservation' %}" class="navbar-link" data-nav-link>Reservation</a>
+        </li>
+
+      
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+
+      
+
+      <a href="#featured-car"  aria-labelledby="aria-label-txt">
+        {% comment %} <ion-icon name="car-outline"></ion-icon> {% endcomment %}
+
+        {% comment %} <span id="aria-label-txt">Explore cars</span> {% endcomment %}
+      </a>
+
+      <a href="#" class="btn user-btn" aria-label="Profile">
+        <ion-icon name="person-outline"></ion-icon>
+      </a>
+        <a href="{% url 'logout' %}" class="btn user-btn">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </a>
+
+
+      <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+        <span class="one"></span>
+        <span class="two"></span>
+        <span class="three"></span>
+      </button>
+
+    </div>
+
+  </div>
+</header>
